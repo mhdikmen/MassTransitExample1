@@ -24,13 +24,3 @@ public class MessageSentEventConsumer : IConsumer<MessageSentEvent>
         }
     }
 }
-
-public class MessageSentEventConsumerDefinition :
-	ConsumerDefinition<MessageSentEventConsumer>
-{
-	protected override void ConfigureConsumer(IReceiveEndpointConfigurator endpointConfigurator, IConsumerConfigurator<MessageSentEventConsumer> consumerConfigurator, IRegistrationContext context)
-	{
-        endpointConfigurator.DiscardFaultedMessages();
-		base.ConfigureConsumer(endpointConfigurator, consumerConfigurator, context);
-	}
-}

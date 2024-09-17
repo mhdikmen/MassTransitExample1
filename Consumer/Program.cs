@@ -1,5 +1,4 @@
 ﻿using Common.Extentions;
-using MassTransit;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 

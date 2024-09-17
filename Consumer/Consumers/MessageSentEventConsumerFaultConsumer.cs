@@ -1,7 +1,7 @@
 ﻿using Common.Events;
 using MassTransit;
 
-namespace Consumer;
+namespace Consumer.Consumers;
 
 public class MessageSentEventConsumerFaultConsumer : IConsumer<Fault<MessageSentEvent>>
 {
