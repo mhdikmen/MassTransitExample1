@@ -27,4 +27,4 @@ This example shows how to consume messages and handle faults via RabbitMQ.
 
 
 
-[See LinkeIn Article](https://www.linkedin.com/pulse/what-masstransit-muhammed-hanifi-dikmen-7ranf/?trackingId=q%2BcJX5BORFW%2FJo%2FZq4gtVw%3D%3D)
+[See LinkedIn Article](https://www.linkedin.com/pulse/what-masstransit-muhammed-hanifi-dikmen-7ranf/?trackingId=q%2BcJX5BORFW%2FJo%2FZq4gtVw%3D%3D)
