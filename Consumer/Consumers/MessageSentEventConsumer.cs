@@ -3,7 +3,7 @@ using MassTransit;
 
 namespace Consumer.Consumers;
 
-public partial class MessageSentEventConsumer : IConsumer<MessageSentEvent>
+public class MessageSentEventConsumer : IConsumer<MessageSentEvent>
 {
     public async Task Consume(ConsumeContext<MessageSentEvent> context)
     {
@@ -23,4 +23,14 @@ public partial class MessageSentEventConsumer : IConsumer<MessageSentEvent>
             throw;
         }
     }
+}
+
+public class MessageSentEventConsumerDefinition :
+	ConsumerDefinition<MessageSentEventConsumer>
+{
+	protected override void ConfigureConsumer(IReceiveEndpointConfigurator endpointConfigurator, IConsumerConfigurator<MessageSentEventConsumer> consumerConfigurator, IRegistrationContext context)
+	{
+        endpointConfigurator.DiscardFaultedMessages();
+		base.ConfigureConsumer(endpointConfigurator, consumerConfigurator, context);
+	}
 }

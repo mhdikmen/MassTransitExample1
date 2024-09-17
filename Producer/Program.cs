@@ -1,4 +1,6 @@
-﻿using MassTransit;
+﻿using Common.Extentions;
+using System.Reflection;
+using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Producer.Services;
@@ -17,21 +19,8 @@ public class Program
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddScoped<MessageService>();
-                services.AddMassTransit(config =>
-                {
-                    config.SetKebabCaseEndpointNameFormatter();
-
-                    config.UsingRabbitMq((context, configurator) =>
-                    {
-                        configurator.Host("localhost", host =>
-                        {
-                            host.Username("guest");
-                            host.Password("guest");
-                        });
-                        configurator.ConfigureEndpoints(context);
-                    });
-                });
-            })
+				services.AddCustomMassTransit();
+			})
             .Build();
         var messageService = host.Services.GetRequiredService<MessageService>();
 

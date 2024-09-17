@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using Common.Extentions;
+using MassTransit;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
@@ -15,23 +16,7 @@ public class Program
         var host = Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
-                
-                services.AddMassTransit(config =>
-                {
-                    config.SetKebabCaseEndpointNameFormatter();
-                    // Configuration for RabbitMQ
-                    config.AddConsumers(Assembly.GetExecutingAssembly());
-
-                    config.UsingRabbitMq((context, configurator) =>
-                    {
-                        configurator.Host("localhost", host =>
-                        {
-                            host.Username("guest");
-                            host.Password("guest");
-                        });
-                        configurator.ConfigureEndpoints(context);
-                    });
-                });
+                services.AddCustomMassTransit(Assembly.GetExecutingAssembly());
             })
             .Build();
 
